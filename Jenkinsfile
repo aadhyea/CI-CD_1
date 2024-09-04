@@ -1,23 +1,23 @@
 pipeline {
     agent any
-    environment{
-        Docker_Image = "calculaator-app:latest"
+    environment {
+        Docker_Image = "calculator-app:latest"
     }
     stages {
         stage("Checkout") {
             steps {
-                git branch:"main", url: "https://github.com/aadhyea/CI-CD_1.git"
+                git branch: "main", url: "https://github.com/aadhyea/CI-CD_1.git"
             }
         }
-        stage("build"){
-            steps{
-                bat "docker build -t ${Docker_Image} ."
-                bat "pip install -r requirements.txt"
+        stage("Build") {
+            steps {
+                sh "docker build -t ${Docker_Image} ."
+                sh "pip install -r requirements.txt"
             }
         }
         stage("Test") {
             steps {
-                bat "python -m unittest tests.py"
+                sh "python -m unittest tests.py"
             }
         }
         stage("Deploy") {
