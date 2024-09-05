@@ -4,4 +4,7 @@ WORKDIR /app
 
 COPY . /app
 
+RUN python -m ensurepip --upgrade
+RUN pip install --upgrade pip
+
 CMD ["python", "Calc.py"]
