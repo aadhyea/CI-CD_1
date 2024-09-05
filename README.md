@@ -1,0 +1,1 @@
+# This is a sample CI/CD pipeline using Jenkins, Docker and GitHub WebHooks
